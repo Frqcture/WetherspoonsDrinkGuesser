@@ -6,6 +6,13 @@ export default function App() {
   const [number, onChangeNumber] = useState('');
   const [nearest, setNearest] = useState('');
 
+  const [yesno, setYesNo] = useState(true);
+
+  function toggle1() {
+    setNearest(kNearest(number));
+    setYesNo(false);
+  }
+
   return (
     <View style={styles.container}>
       <SafeAreaView>
@@ -18,7 +25,8 @@ export default function App() {
 
         <Button
           title='Estimate'
-          onPress={() => setNearest(kNearest(number))}
+          onPress={() => toggle1()}
+          disabled={!yesno}
         />
 
         <Text>{labels[nearest]}</Text>
@@ -30,11 +38,15 @@ export default function App() {
             title='Correct'
             style={{flex: 1}}
             color={'green'}
+            disabled={yesno}
+            onPress={() => setYesNo(true)}
           />
           <Button 
             title='Incorrect'
             style={{flex: 1}}
             color={'red'}
+            disabled={yesno}
+            onPress={() => setYesNo(true)}
           />
         </View>
       </SafeAreaView>
