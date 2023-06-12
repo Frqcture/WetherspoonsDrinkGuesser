@@ -15,14 +15,30 @@ export default function App() {
           placeholder='How much did you spend at wetherspoons?'
           keyboardType='numeric'
         />
+
+        <Button
+          title='Estimate'
+          onPress={() => setNearest(kNearest(number))}
+        />
+
+        <Text>{labels[nearest]}</Text>
+
+        <View
+          style={{flexDirection: 'row', justifyContent: 'space-between'}}
+        >
+          <Button
+            title='Correct'
+            style={{flex: 1}}
+            color={'green'}
+          />
+          <Button 
+            title='Incorrect'
+            style={{flex: 1}}
+            color={'red'}
+          />
+        </View>
       </SafeAreaView>
 
-      <Button
-        title='Estimate'
-        onPress={() => setNearest(kNearest(number))}
-      />
-
-      <Text>{labels[nearest]}</Text>
     </View>
   );
 }
@@ -35,24 +51,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
-
-// function kNearest(number) {
-//   let nearest = data[0];
-//   let nearestDistance = Math.abs(nearest - number); 
-//   for (let i = 1; i < data.length; i++) {
-//       let distance = Math.abs(data[i] - number);
-//       if (distance < nearestDistance) {
-//           nearest = data[i];
-//           index = i;
-//           nearestDistance = distance;
-//       }
-//   }
-//   return index;
-// }
-
-//Write a k Nearest Neighbours function with a value of k = 2, using the data below
-//The function should take a number as an argument and return the index of the nearest number in the data array
-//The function should return the index of the nearest number in the data array
 
 function kNearest(number) {
   let nearest = data[0];
@@ -71,6 +69,8 @@ function kNearest(number) {
   }
   return index;
 }
+
+//.
 
 let index = 0;
 let labels = ['Corona', 'Budweiser', 'Leffe Blonde', 'Worthingtons Creamflow', 'Bud Light', 'Carlsberg Pilsner', 'Carling', 'Coors', 'Stella Artois', 'San Miguel', 'Guinness', 'Shipyard American Pale Ale', 'BrewDog Punk IPA', 'Stowford Press', 'Stowford Press mixed berries', 'Kopparberg Strawberry & Lime cider on draught', 'Thatchers Gold', 'Thistly Cross Whisky Cask cider', 'Westons Old Rosie Cloudy Cider', 'Greene King Ruddles Best', 'Sharps Doom Bar', 'Greene King Abbot Ale', 'Asahi', 'Peroni', 'Heineken', 'Staropramen', 'Birra Moretti' , 'Tsingtao', 'Singha', 'Erdinger', 'Tusker', 'Tyskie Gronie', 'Efes', 'Cobra', 'Newcastle Brown Ale', 'Corona', 'Budweiser', 'Desperados', 'Estrella Galicia', 'Peroni', 'Becks', 'Sol', 'Blue Moon Belgian-style wheat ale', 'Mythos', 'BrewDog Elvis Juice', 'BrewDog Hazy Jane', 'Lagunitas IPA', 'Goose IPA', 'Camden Hells', 'Bud Light Passionfruit hard Seltzer', 'Bud Light Strawberry hard Seltzer', 'Mikes Black Cherry hard Seltzer', 'Mikes Raspberry hard Seltzer', 'Angry Orchard', 'Aspall Cyder', 'Kopparberg Strawberry & Lime cider', 'Kopparberg Mixed Fruit cider', 'Kopparberg Light Passionfruit cider', 'Kopparberg Tropical', 'Bulmers Red Berries cider', 'Hooch', 'WKD Blue', 'Smirnoff Ice', 'Stella Artois - Alcohol Free', 'Heineken 0.0 - Alcohol free', 'Becks Blue - Alcohol free', 'Kopparberg Strawberry & Lime - Alcohol free', 'Adnams Ghost Ship - Low alcohol', 'BrewDog Punk AF - Low alcohol', 'Erdinger - Low alcohol', 'Coldwater Creek Chardonnay by Concha y Toro', 'Coldwater Creek Pinot Grigio by Concha y Toro', 'Villa Maria Sauvignon Blanc', 'Villa Maria Sauvignon Blanc', 'Hardys Chardonnay', 'Hardys Pinot Grigio', 'Coldwater Creek Merlot by Concha y Toro', 'Hardys Shiraz', 'Trivento Malbec', 'Casillero del Diablo Cabernet Sauvignon', 'Casillero del Diablo Cabernet Sauvignon', 'Coldwater Creek Rosé by Concha y Toro', 'Belle Année by Mirabeau' , 'Hardys Rosé', 'Belle Année by Mirabeau' , 'Broadwoods Folly', 'Wolf Blass Sparkling Brut', 'Teresa Rizzi Prosecco DOC', 'Teresa Rizzi Prosecco DOC', 'Teresa Rizzi Sparkling Rosé', 'Au Vodka Blue Raspberry', 'Au Vodka Black Grape', 'Au Vodka Pineapple Crush', 'Smirnoff Mango & Passionfruit Twist' , 'Smirnoff Raspberry Crush vodka', 'Smirnoff', 'Smirnoff vodka and Monster', 'Absolut Vanilia', 'Absolut', 'Grey Goose', 'Twin Fin Coconut & Lychee rum', 'Duppy White rum', 'Bumbu', 'Kopparberg Cherry rum', 'Dead Mans Finger Pineapple rum', 'Captain Morgan Tiki', 'Captain Morgan Original Spiced Gold', 'Captain Morgan White', 'Bacardi Carta Blanca', 'The Kraken Black Spiced', 'Lambs Navy', 'Haig Club Clubman', 'Bells', 'The Famous Grouse', 'Jameson', 'Jack Daniels', 'Jack Daniels Tennessee Honey', 'Glenfiddich 12-year-old', 'Glenmorangie 10-year-old', 'Jim Beam', 'Buffalo Trace', 'Flävar Raspberry & Liquorice schnapps', 'Flävar Strawberry & Lime schnapps', 'Flävar Salted Caramel schnapps', 'Jack Daniels Tennessee Apple Liqueur', 'Sheep Dog Peanut Butter Whiskey liqueur', 'Disaronno Amaretto', 'Fireball Cinnamon Whisky Liqueur', 'Chambord Black Raspberry Liqueur', 'Archers peach schnapps', 'Malibu', 'Southern Comfort', 'Baileys', 'Tia Maria', 'Strika Herbal Liqueur', 'Cockburns Ruby Port', 'Martini® Extra Dry Vermouth', 'Martini® Rosso Vermouth', 'Black Bottle', 'E & J', 'Aperol Spritz', 'Raspberry Mojito', 'Zombie', 'Classic Pimms', 'Kopparberg Strawberry Delight', 'Smirnoff vodka and Monster', 'Hawaiian Pipeline Punch', 'Cranberry Breeze', 'Purple Rain', 'Blue Lagoon', 'Woo Woo', 'Sex on the Beach', 'Mango Monster Mash', 'The Godfather', 'Ginberry Fizz', 'Porn Star Martini', 'Bubblegin', 'Corona', 'Budweiser', 'Leffe Blonde', 'Worthingtons Creamflow', 'Bud Light', 'Carlsberg Pilsner', 'Carling', 'Coors', 'Stella Artois', 'San Miguel', 'Guinness', 'BrewDog Punk IPA', 'Stowford Press', 'Stowford Press Dark Berry', 'Kopparberg Strawberry & Lime cider on draught', 'Thatchers Gold', 'Blackthorn cider' , 'Greene King Ruddles Best', 'Sharps Doom Bar', 'Greene King Abbot Ale', 'Oakham Citra T90', 'Thornbridge Lukas', 'Brewsters IPA', 'BrewDog Elvis Juice', 'BrewDog Hazy Jane', 'Camden Hells', 'Lagunitas IPA', 'Goose IPA', 'Asahi', 'Peroni', 'Heineken', 'Staropramen', 'Birra Moretti' , 'Erdinger', 'Tusker', 'Tyskie Gronie', 'Efes', 'Newcastle Brown Ale', 'Corona', 'Budweiser', 'Desperados', 'Estrella Galicia', 'Peroni', 'Becks', 'Sol', 'Bud Light Seltzer passion fruit', 'Bud Light Seltzer strawberry', 'Mikes Hard Seltzer black cherry', 'Mikes Hard Seltzer raspberry', 'Angry Orchard', 'Aspall Cyder', 'Thatchers Blood Orange', 'Bulmers Original', 'Kopparberg Strawberry & Lime cider', 'Kopparberg Mixed Fruit cider', 'Kopparberg Light Passionfruit cider', 'Kopparberg Mixed Fruit Tropical', 'Bulmers Red Berries cider', 'Hooch', 'WKD Blue', 'Smirnoff Ice', 'Stella Artois - Alcohol Free', 'Heineken 0.0 - Alcohol free', 'Becks Blue - Alcohol free', 'Kopparberg Strawberry & Lime - Alcohol free', 'Adnams Ghost Ship - Low alcohol', 'BrewDog Punk AF - Low alcohol', 'Erdinger - Low alcohol', 'Coldwater Creek Chardonnay by Concha y Toro', 'Coldwater Creek Pinot Grigio by Concha y Toro', 'Villa Maria Sauvignon Blanc', 'Villa Maria Sauvignon Blanc', 'Hardys Chardonnay', 'Hardys Pinot Grigio', 'Zana Pinot Noir', 'Hardys Shiraz', 'Trivento Malbec', 'Casillero del Diablo Cabernet Sauvignon', 'Coldwater Creek Rosé by Concha y Toro', 'Belle Année by Maison Mirabeau', 'France', 'Belle Année by Maison Mirabeau', 'France', 'Hardys Rosé', 'Denbies Whitedowns Brut', 'Broadwoods Folly', 'Wolf Blass Sparkling Brut', 'Teresa Rizzi Prosecco DOC', 'Teresa Rizzi Prosecco DOC', 'Teresa Rizzi Sparkling Rosé', 'Aperol Spritz', 'Mango & Passionfruit spritz', 'Peach Blush Spritz', 'Tanqueray spritz', 'Classic Pimms', 'Au Vodka Blue Raspberry', 'Au Vodka black grape', 'Au Vodka pineapple crush', 'Smirnoff Mango & Passionfruit Twist' , 'Smirnoff Raspberry Crush vodka', 'Smirnoff', 'Smirnoff vodka and Monster', 'Absolut Vanilia', 'Absolut', 'Skyy', 'Stolichnaya', 'Grey Goose', 'Twin Fin Coconut & Lychee rum', 'Duppy White rum', 'Bumbu', 'Kopparberg Cherry rum', 'Dead Mans Finger Pineapple rum', 'Captain Morgan Tiki', 'Captain Morgan Original Spiced Gold', 'Captain Morgan White', 'BrewDog Five Hundred Cuts Botanical Rum', 'Bacardi Carta Blanca', 'The Kraken Black Spiced', 'Lambs Navy', 'Haig Club Clubman', 'Bells', 'The Famous Grouse', 'Jameson', 'Jack Daniels', 'Glenfiddich 12-year-old', 'Glenmorangie 10-year-old', 'Jim Beam', 'Buffalo Trace', 'Flävar Raspberry & Liquorice schnapps', 'Flävar Strawberry & Lime schnapps', 'Flävar Salted Caramel schnapps', 'Jack Daniels Tennessee Apple liqueur', 'Sheep Dog Peanut Butter whiskey liqueur', 'Disaronno Amaretto', 'Fireball Cinnamon Whisky liqueur', 'Chambord Black Raspberry liqueur', 'Archers peach schnapps', 'Malibu', 'Southern Comfort', 'Baileys', 'Tia Maria', 'Strika Herbal Liqueur', 'Cockburns Ruby Port', 'Martini® Extra Dry Vermouth', 'Martini® Rosso Vermouth', 'Black Bottle', 'E & J', 'Corona', 'Budweiser', 'Leffe Blonde', 'Worthingtons Creamflow', 'Bud Light', 'Carlsberg Pilsner', 'Carling', 'Coors', 'Stella Artois', 'San Miguel', 'Guinness', 'Shipyard American Pale Ale', 'BrewDog Punk IPA', 'Blue Moon', 'Stowford Press', 'Stowford Press mixed berries', 'Kopparberg Strawberry & Lime cider on draught', 'Thatchers Gold', 'Thatchers Haze', 'Greene King Ruddles Best', 'Sharps Doom Bar', 'Greene King Abbot Ale', 'Asahi', 'Peroni', 'Heineken', 'Staropramen', 'Birra Moretti' , 'Tsingtao', 'Singha', 'Erdinger', 'Tusker', 'Tyskie Gronie', 'Efes', 'Cobra', 'Newcastle Brown Ale', 'Corona', 'Budweiser', 'Desperados', 'Estrella Galicia', 'Peroni', 'Becks', 'Sol', 'Blue Moon Belgian-style wheat ale', 'Staropramen', 'Duvel', 'Brooklyn Lager', 'BrewDog Elvis Juice', 'BrewDog Hazy Jane', 'Goose IPA', 'Camden Hells', 'Staropramen', 'Bud Light Passionfruit hard Seltzer', 'Bud Light Strawberry hard Seltzer', 'Mikes Black Cherry hard Seltzer', 'Mikes Raspberry hard Seltzer', 'Angry Orchard', 'Aspall Cyder', 'Kopparberg Strawberry & Lime cider', 'Kopparberg Mixed Fruit cider', 'Kopparberg Light Passionfruit cider', 'Kopparberg Tropical', 'Bulmers Red Berries cider', 'Hooch', 'WKD Blue', 'Smirnoff Ice', 'Stella Artois - Alcohol Free', 'Heineken 0.0 - Alcohol free', 'Becks Blue - Alcohol free', 'Kopparberg Strawberry & Lime - Alcohol free', 'Adnams Ghost Ship - Low alcohol', 'BrewDog Punk AF - Low alcohol', 'Erdinger - Low alcohol', 'Coldwater Creek Chardonnay by Concha y Toro', 'Coldwater Creek Pinot Grigio by Concha y Toro', 'Villa Maria Sauvignon Blanc', 'Villa Maria Sauvignon Blanc', 'Hardys Chardonnay', 'Hardys Pinot Grigio', 'Coldwater Creek Merlot by Concha y Toro', 'Hardys Shiraz', 'Casillero del Diablo Cabernet Sauvignon', 'Coldwater Creek Rosé by Concha y Toro', 'Belle Année by Mirabeau' , 'Hardys Rosé', 'Belle Année by Mirabeau' , 'Wolf Blass Sparkling Brut', 'Serre del Lago Prosecco DOC', 'Serre del Lago Prosecco DOC', 'Serre del Lago Rosato', 'Teresa Rizzi Prosecco DOC', 'Teresa Rizzi Prosecco DOC', 'Teresa Rizzi Sparkling Rosé', 'Au Vodka Blue Raspberry', 'Au Vodka Black Grape', 'Au Vodka Pineapple Crush', 'Smirnoff Mango & Passionfruit Twist' , 'Smirnoff Raspberry Crush vodka', 'Smirnoff', 'Smirnoff vodka and Monster', 'Absolut', 'Stolichnaya', 'Grey Goose', 'Twin Fin Coconut & Lychee rum', 'Duppy White rum', 'Bumbu', 'Kopparberg Cherry rum', 'Dead Mans Finger Pineapple rum', 'Captain Morgan Tiki', 'Captain Morgan Original Spiced Gold', 'Captain Morgan White', 'Bacardi Carta Blanca', 'The Kraken Black Spiced', 'Lambs Navy', 'Haig Club Clubman', 'Bells', 'The Famous Grouse', 'Jameson', 'Jack Daniels', 'Jack Daniels Tennessee Honey', 'Glenfiddich 12-year-old', 'Glenfiddich 18-year-old', 'Glenmorangie 10-year-old', 'Talisker 10-year-old', 'Jim Beam', 'Buffalo Trace', 'Flävar Raspberry & Liquorice schnapps', 'Flävar Strawberry & Lime schnapps', 'Flävar Salted Caramel schnapps', 'Jack Daniels Tennessee Apple Liqueur', 'Sheep Dog Peanut Butter Whiskey liqueur', 'Disaronno Amaretto', 'Fireball Cinnamon Whisky Liqueur', 'Chambord Black Raspberry Liqueur', 'Archers peach schnapps', 'Malibu', 'Southern Comfort', 'Baileys', 'Tia Maria', 'Strika Herbal Liqueur', 'Cockburns Ruby Port', 'Martini® Extra Dry Vermouth', 'Martini® Rosso Vermouth', 'Black Bottle', 'E & J', 'Aperol Spritz', 'Tropical Daiquiri', 'Raspberry Mojito', 'Zombie', 'Classic Pimms', 'Kopparberg Strawberry Delight', 'Smirnoff vodka and Monster', 'Hawaiian Pipeline Punch', 'Cranberry Breeze', 'Purple Rain', 'Blue Lagoon', 'Woo Woo', 'Sex on the Beach', 'Mango Monster Mash', 'The Godfather', 'Ginberry Fizz', 'Porn Star Martini', 'Bubblegin'];
