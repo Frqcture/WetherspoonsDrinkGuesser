@@ -8,31 +8,42 @@ export default function App() {
 
   const [yesno, setYesNo] = useState(true);
 
+  let drinkAccuracy = [];
+  let drinkAccuracyCounter = [];
+
   function disableYesNo() {
     setNearest(kNearest(number));
     setYesNo(false);
   }
 
   function yesNoCounter(trueOrFalse) {
-
-    const fs = require('fs');
-
-    fs.readFile('Count.json','utf8', (error, data) => {
-      if (error) {
-        throw error;
-      }
-
-      let jsonData = JSON.parse(data);
-    })
+    setYesNo(true);
 
     if (trueOrFalse) {
-      
-    }
-    else {
-      
+      //Do something if correct
+      for(let i = 0; i < drinkAccuracy.length; i++) {
+        if(drinkAccuracy[i] == labels[nearest]) {
+          drinkAccuracyCounter[i]++;
+          return 0;
+        }
+      }
+
+      drinkAccuracy.push(labels[nearest]);
+      drinkAccuracyCounter[drinkAccuracy.length - 1]++;
     }
 
-    console.log(jsonData);
+    else {
+      //Do something if incorrect
+      for(let i = 0; i < drinkAccuracy.length; i++) {
+        if(drinkAccuracy[i] == labels[nearest]) {
+          drinkAccuracyCounter[i]--;
+          return 0;
+        }
+      }
+
+      drinkAccuracy.push(labels[nearest]);
+      drinkAccuracyCounter[drinkAccuracy.length - 1]--;
+    }
   }
 
   return (
@@ -52,6 +63,8 @@ export default function App() {
         />
 
         <Text>{labels[nearest]}</Text>
+        <Text>{drinkAccuracy[0]}</Text>
+        <Text>{drinkAccuracyCounter[0]}</Text>
 
         <View
           style={{flexDirection: 'row', justifyContent: 'space-between'}}
@@ -61,14 +74,14 @@ export default function App() {
             style={{flex: 1}}
             color={'green'}
             disabled={yesno}
-            onPress={() => setYesNo(true)}
+            onPress={() => yesNoCounter(true)}
           />
           <Button 
             title='Incorrect'
             style={{flex: 1}}
             color={'red'}
             disabled={yesno}
-            onPress={() => setYesNo(true)}
+            onPress={() => yesNoCounter(false)}
           />
         </View>
       </SafeAreaView>
