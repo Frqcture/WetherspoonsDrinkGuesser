@@ -2,14 +2,14 @@ import { StatusBar } from 'expo-status-bar';
 import { SafeAreaView, StyleSheet, Text, TextInput, View, Button } from 'react-native';
 import React, { useState } from 'react';
 
+let drinkAccuracy = ['Corona'];
+let drinkAccuracyCounter = [0];
+
 export default function App() {
   const [number, onChangeNumber] = useState('');
   const [nearest, setNearest] = useState('');
 
   const [yesno, setYesNo] = useState(true);
-
-  let drinkAccuracy = [];
-  let drinkAccuracyCounter = [];
 
   function disableYesNo() {
     setNearest(kNearest(number));
@@ -19,17 +19,23 @@ export default function App() {
   function yesNoCounter(trueOrFalse) {
     setYesNo(true);
 
+
     if (trueOrFalse) {
+
       //Do something if correct
       for(let i = 0; i < drinkAccuracy.length; i++) {
         if(drinkAccuracy[i] == labels[nearest]) {
+
+          console.log(drinkAccuracyCounter[i]);
           drinkAccuracyCounter[i]++;
-          return 0;
+          console.log(drinkAccuracyCounter[i]);
+        }
+        else if (i == drinkAccuracy.length - 1) {
+          drinkAccuracy.push(labels[nearest]);
+          drinkAccuracyCounter.push(0);
+          drinkAccuracyCounter[drinkAccuracy.length - 1]++;
         }
       }
-
-      drinkAccuracy.push(labels[nearest]);
-      drinkAccuracyCounter[drinkAccuracy.length - 1]++;
     }
 
     else {
@@ -37,12 +43,13 @@ export default function App() {
       for(let i = 0; i < drinkAccuracy.length; i++) {
         if(drinkAccuracy[i] == labels[nearest]) {
           drinkAccuracyCounter[i]--;
-          return 0;
+        }
+        else if (i == drinkAccuracy.length - 1) {
+          drinkAccuracy.push(labels[nearest]);
+          drinkAccuracyCounter.push(0);
+          drinkAccuracyCounter[drinkAccuracy.length - 1]--;
         }
       }
-
-      drinkAccuracy.push(labels[nearest]);
-      drinkAccuracyCounter[drinkAccuracy.length - 1]--;
     }
   }
 
@@ -63,8 +70,6 @@ export default function App() {
         />
 
         <Text>{labels[nearest]}</Text>
-        <Text>{drinkAccuracy[0]}</Text>
-        <Text>{drinkAccuracyCounter[0]}</Text>
 
         <View
           style={{flexDirection: 'row', justifyContent: 'space-between'}}
