@@ -8,9 +8,31 @@ export default function App() {
 
   const [yesno, setYesNo] = useState(true);
 
-  function toggle1() {
+  function disableYesNo() {
     setNearest(kNearest(number));
     setYesNo(false);
+  }
+
+  function yesNoCounter(trueOrFalse) {
+
+    const fs = require('fs');
+
+    fs.readFile('Count.json','utf8', (error, data) => {
+      if (error) {
+        throw error;
+      }
+
+      let jsonData = JSON.parse(data);
+    })
+
+    if (trueOrFalse) {
+      
+    }
+    else {
+      
+    }
+
+    console.log(jsonData);
   }
 
   return (
@@ -25,7 +47,7 @@ export default function App() {
 
         <Button
           title='Estimate'
-          onPress={() => toggle1()}
+          onPress={() => disableYesNo()}
           disabled={!yesno}
         />
 
