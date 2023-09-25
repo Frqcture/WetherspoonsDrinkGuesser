@@ -1,6 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { SafeAreaView, StyleSheet, Text, TextInput, View, Button } from 'react-native';
 import React, { useState } from 'react';
+//import RNFS from 'react-native-fs';
 
 let drinkAccuracy = ['Corona'];
 let drinkAccuracyCounter = [0];
@@ -19,6 +20,14 @@ export default function App() {
   function yesNoCounter(trueOrFalse) {
     setYesNo(true);
 
+    // fetch('drinkAccuracy.txt')
+    //   .then((response) => response.drinkAccuracyText())
+
+    // fetch('drinkAccuracyCounter.txt')
+    //   .then((response) => response.drinkAccuracyCounterText())
+
+    // drinkAccuracy = JSON.parse(drinkAccuracyText);
+    // drinkAccuracyCounter = JSON.parse(drinkAccuracyCounterText);
 
     if (trueOrFalse) {
 
